@@ -1,0 +1,10 @@
+{
+    "presets": [
+        "@babel/react",
+    ],
+    "plugins": [
+        ["@babel/transform-react-jsx", {
+            "pragma": "createFSElement",
+        }]
+    ]
+}

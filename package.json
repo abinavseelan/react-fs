@@ -1,0 +1,22 @@
+{
+  "name": "node-fs-jsx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "FS.js",
+  "dependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/preset-react": "^7.0.0",
+    "express": "^4.17.1",
+    "react": "^16.8.6",
+    "react-reconciler": "^0.20.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "babel src --out-dir dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
