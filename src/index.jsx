@@ -5,24 +5,79 @@ const fs = require('fs');
 
 const app = express();
 
-const Project = ({ name }) => (
-    <folder name={name}>
-        <folder name='client'>
-            <folder name='assets' />
-            <folder name='css' />
-            <folder name='js' />
-            <file name='index' extension='.html'>
-                {
-                    '<html><head><title>Sample</title></head><body</html>'
-                }
-            </file>
-        </folder>
-    </folder>
-)
+const {
+    react: {
+        appContent: reactAppContent,
+        indexContent: reactIndexContent,
+    },
+    basic: {
+        indexContent: basicIndexContent,
+    }
+} = require('./content');
 
-app.post('/:projectName', async (req, res) => {
+class BasicProject extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.name = `${Date.now()}-${this.props.name}`;
+    }
+    render() {
+        return (
+            <folder name={this.name}>
+                <folder name='client'>
+                    <folder name='assets' />
+                    <folder name='css' />
+                    <folder name='js' />
+                    <file name='index' extension='.html'>
+                        {basicIndexContent}
+                    </file>
+                </folder>
+            </folder>
+        )
+    }
+}
+
+class ReactProject extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.name = `${Date.now()}-${this.props.name}`;
+    }
+
+    render() {
+        return (
+            <folder name={this.name}>
+                <folder name='client'>
+                    <folder name='src'>
+                        <file name='app' extension='.jsx'>
+                            {reactAppContent}
+                        </file>
+                        <file name='index' extension='.jsx'>
+                            {reactIndexContent}
+                        </file>
+                    </folder>
+                </folder>
+            </folder>
+        );
+    }
+}
+const Project = ({ projectType, name }) => {
+    if (projectType === 'react') {
+        return (
+            <ReactProject name={name} />
+        );
+    }
+
+    if (projectType === 'basic') {
+        return (
+            <BasicProject name={name} />
+        );
+    }
+}
+
+app.post('/:type/:projectName', async (req, res) => {
     render(
-        <Project name={req.params.projectName} />,
+        <Project name={req.params.projectName} projectType={req.params.type} />,
         './projects'
     );
 

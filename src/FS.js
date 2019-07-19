@@ -40,7 +40,7 @@ module.exports = {
             const { extension, children: contents } = props;
 
             console.log(filename);
-            fs.writeFileSync(`./${root}/${filename}${extension}`, contents);
+            fs.writeFileSync(`${filename}${extension}`, Array.isArray(contents) ? contents.join('') : contents);
         }
     },
     createFSElement: function (element, props, children) {
