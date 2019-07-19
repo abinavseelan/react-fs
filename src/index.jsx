@@ -1,6 +1,7 @@
 const React = require('react');
 const express = require('express');
 const { render, createFSElement } = require('./FS');
+const fs = require('fs');
 
 const app = express();
 
@@ -10,7 +11,7 @@ const Project = ({ name }) => (
             <folder name='assets' />
             <folder name='css' />
             <folder name='js' />
-            <file name='index.html'>
+            <file name='index' extension='.html'>
                 {
                     '<html><head><title>Sample</title></head><body</html>'
                 }
@@ -27,6 +28,10 @@ app.post('/:projectName', async (req, res) => {
 
     return res.sendStatus(204);
 });
+
+if (!fs.existsSync('./projects')) {
+    fs.mkdirSync('./projects');
+}
 
 app.listen(1337, () => {
     console.log('Server running on port 1337');

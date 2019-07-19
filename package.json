@@ -14,7 +14,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "build": "babel src --out-dir dist"
+    "build": "babel src --out-dir dist",
+    "start": "rm -rf ./projects && npm run build && node dist/index.js"
   },
   "keywords": [],
   "author": "",
