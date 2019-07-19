@@ -47,8 +47,8 @@ class ReactProject extends React.Component {
     render() {
         return (
             <folder name={this.name}>
-                <folder name='client'>
-                    <folder name='src'>
+                <folder name='src'>
+                    <folder name='client'>
                         <file name='app' extension='.jsx'>
                             {reactAppContent}
                         </file>

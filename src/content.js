@@ -2,7 +2,7 @@ const reactAppContent = `
 import React from 'react';
 
 const App = () => (
-    <h1>React Meetup!</h1>
+    <h1>Hello React Meetup!</h1>
 );
 
 export default App;
@@ -21,7 +21,7 @@ const basicIndexContent = `
         <title>Demo Project</title>
     </head>
     <body>
-        <h1>React Meetup!</h1>
+        <h1>Hello React Meetup!</h1>
     </body>
 </html>
 `

@@ -1,12 +1,12 @@
 const { resolve } = require('path');
 const fs = require('fs');
 
-function resolveCompositeElement(el) {
-    function isClass(func) {
-        return typeof func === 'function'
-            && /^class\s/.test(Function.prototype.toString.call(func));
-    }
+function isClass(func) {
+    return typeof func === 'function'
+        && /^class\s/.test(Function.prototype.toString.call(func));
+}
 
+function resolveCompositeElement(el) {
     if (typeof el.type === 'function') {
         if (isClass(el.type)) {
             return resolveCompositeElement((new el.type(el.props).render()));
@@ -43,7 +43,7 @@ module.exports = {
             fs.writeFileSync(`${filename}${extension}`, Array.isArray(contents) ? contents.join('') : contents);
         }
     },
-    createFSElement: function (element, props, children) {
+    createFSElement: function (type, props, children) {
         const childrenLength = arguments.length - 2;
 
         if (childrenLength === 1) {
@@ -57,7 +57,7 @@ module.exports = {
         }
 
         return {
-            type: element,
+            type,
             props,
         }
     }
