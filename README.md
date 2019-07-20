@@ -13,11 +13,8 @@ This is the companion repository for the talk [React: Beyond UI](https://slides.
 
 ## Demo
 
-Using Postman (or an an equivalent REST API testing application), make a POST request to `localhost:1337/:type/:name` where
+Using Postman (or an an equivalent REST API testing application), make a POST request to `localhost:1337/:type/:name` where `:type` is either `react` or `basic` and `:name` is any non-spaced text (eg: `foo-bar`).
 
-`:type`: Either `react` or `basic`
-`:name`: Any non-spaced text
-
-This will run through the custom `render()` method in `src/FS.js` and produce the relevant project structure for the given `:type`.
+The express endpoint will run through the custom `render()` method in `src/FS.js` and produce the relevant project structure for the given `:type`.
 
 If you want to play around and make your own folder structures for other `:type`, add your JSX to `index.jsx`. :smile:
