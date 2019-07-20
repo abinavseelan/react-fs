@@ -19,7 +19,7 @@ class BasicProject extends React.Component {
     constructor(props) {
         super(props);
 
-        this.name = `${Date.now()}-${this.props.name}`;
+        this.name = `${this.props.name}-${Date.now()}`;
     }
     render() {
         return (
@@ -41,7 +41,7 @@ class ReactProject extends React.Component {
     constructor(props) {
         super(props);
 
-        this.name = `${Date.now()}-${this.props.name}`;
+        this.name = `${this.props.name}-${Date.now()}`;
     }
 
     render() {
@@ -61,6 +61,7 @@ class ReactProject extends React.Component {
         );
     }
 }
+
 const Project = ({ projectType, name }) => {
     if (projectType === 'react') {
         return (
